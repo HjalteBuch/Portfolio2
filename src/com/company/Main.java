@@ -97,6 +97,8 @@ public class Main {
         towns.addVertex(Soroe);
         towns.addVertex(Nakskov);
 
+        towns.makeUndirected();
+
         towns.MSTprims();
 
     }

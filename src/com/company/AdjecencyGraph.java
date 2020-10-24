@@ -19,6 +19,22 @@ public class AdjecencyGraph {
         Edge newEdge = new Edge(from, to, distance);
     }
 
+    public int getSize(){
+        return vertices.size();
+    }
+
+    public void makeUndirected(){
+        for(int v = 0; v < vertices.size(); v++){
+            Vertex currentVertex = vertices.get(v);
+            for(int e = 0; e < currentVertex.getEdges().size(); e++){
+                Edge currentEdge = currentVertex.getEdges().get(e);
+                if(!currentEdge.getToVertex().hasEdge(currentVertex)){
+                    this.addEdge(currentEdge.getToVertex(), currentVertex, currentEdge.getDistance());
+                }
+            }
+        }
+    }
+
     public void MSTprims(){
         PriorityQueue<Vertex> townDistances = new PriorityQueue<>();
 
@@ -34,7 +50,7 @@ public class AdjecencyGraph {
 
         // ordenlige måde at gøre det på, men Haslev når ikke at tilføje nogle værdier da de andre bliver fjernet fra listen først.
             //hvis vi tilføjer elementerne igen, vil det altid være den samme vertex som vil køre igen og igen, (eskildstrup)
-        /*while(!townDistances.isEmpty()){
+        while(!townDistances.isEmpty()){
             Vertex MSTVertex = townDistances.poll();
             MSTVertex.isInList = false;
             for(int e = 0; e < MSTVertex.getEdges().size(); e++){
@@ -47,12 +63,12 @@ public class AdjecencyGraph {
                     townDistances.offer(toVertex);
                 }
             }
-        }*/
+        }
 
         //Forsøg på at gøre det på en anden måde, men er ikke helt sikker på dette virker.
         //kan kun forestille mig dette skaber andre problemer, men kan ikke lige se hvad det skulle være...
             //måske gøre dette efter vi har kørt det ovenstående loop færdigt, så vi kun køre med de resterende Vertexes som har værdier == MAX.VALUE?
-        for(int v = 0; v < vertices.size(); v++){
+        /*for(int v = 0; v < vertices.size(); v++){
             Vertex MSTVertex = vertices.get(v);
             for(int e = 0; e < MSTVertex.getEdges().size(); e++){
                 Edge MSTEdge = MSTVertex.getEdges().get(e);
@@ -62,10 +78,10 @@ public class AdjecencyGraph {
                     toVertex.predecessor = MSTVertex;
                 }
             }
-        }
+        }*/
 
         System.out.println("This is the cheapest route from town to town: ");
-        String predecessor;
+       /* String predecessor;
         for (int i = 0; i < vertices.size(); i++){
 
             if (vertices.get(i).predecessor == null){
@@ -75,7 +91,12 @@ public class AdjecencyGraph {
             }
                 System.out.println("    " + i + ") From: " + predecessor + " To: " + vertices.get(i).getName() + " With a distance of: " + vertices.get(i).distance);
 
+        }*/
+        for(int i = 0; i < vertices.size(); i++){
+            if(vertices.get(i).predecessor != null){
+                System.out.println("     " + i + ") From: " + vertices.get(i).predecessor.getName() + " To: " + vertices.get(i).getName() + " With a distance of: " + vertices.get(i).distance);
+            }
         }
-        System.out.println("\n Amount of towns: " + vertices.size());
+        System.out.println("\n Number of towns in total: " + vertices.size());
     }
 }

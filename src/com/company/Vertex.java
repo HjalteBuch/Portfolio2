@@ -41,4 +41,13 @@ public class Vertex implements Comparable<Vertex> {
     public String toString() {
         return "Vertex: " + this.getName();
     }
+
+    public boolean hasEdge(Vertex vertex){
+        for(int e = 0; e < edges.size(); e++){
+            if(edges.get(e).getToVertex() == vertex){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -18,10 +18,6 @@ public class AdjecencyGraph {
         Edge newEdge = new Edge(from, to, distance);
     }
 
-    public int getSize(){
-        return vertices.size();
-    }
-
     public void makeUndirected(){
         for(int v = 0; v < vertices.size(); v++){
             Vertex currentVertex = vertices.get(v);

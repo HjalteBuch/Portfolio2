@@ -89,17 +89,17 @@ public class Main {
         towns.addVertex(Slagelse);
         towns.addEdge(Slagelse, Soroe, 14);
 
-        //skal resten have edges også? eller er det ligegyldigt?
-            // det er ligegyldigt da det ikke gør noget hvis de samme Edges kommer igen.
         towns.addVertex(NykoebingF);
         towns.addVertex(Vordingborg);
         towns.addVertex(Roskilde);
         towns.addVertex(Soroe);
         towns.addVertex(Nakskov);
 
+        //Tilføj alle edges til alle de Vertexes som de berører
         towns.makeUndirected();
 
         towns.MSTprims();
 
+        towns.printMST();
     }
 }

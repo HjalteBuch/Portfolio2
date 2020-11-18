@@ -31,7 +31,7 @@ public class AdjecencyGraph {
         }
     }
 
-    // Figure out the shortest route around to all vertices
+    // Figure out the minimum spanning tree around all vertices
     public void MSTprims(){
         PriorityQueue<Vertex> townDistances = new PriorityQueue<>();
 
@@ -64,7 +64,7 @@ public class AdjecencyGraph {
         }
     }
 
-    // Print out the shortest route around all vertexes
+    // Print out the minimum spanning tree around all vertexes
     public void printMST(){
         int totalDistance = 0;
         System.out.println("This is the cheapest route from town to town: ");
